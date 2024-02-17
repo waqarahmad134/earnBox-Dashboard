@@ -12,7 +12,7 @@ import FormLayout from './pages/Form/FormLayout';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
-// import Buttons from './pages/UiElements/buttons';
+// import Buttons from './pages/UiElements/buttons';z 
 
 function App() {
   const [loading, setLoading] = useState(true);
