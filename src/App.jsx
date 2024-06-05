@@ -3,16 +3,18 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
-import Chart from './pages/Chart';
 import ECommerce from './pages/Dashboard/ECommerce';
-import FormElements from './pages/Form/FormElements';
-import FormLayout from './pages/Form/FormLayout';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
-// import Buttons from './pages/UiElements/buttons';z 
+import ProductCategories from './pages/ProductCategories';
+import Products from './pages/Products';
+import Users from './pages/Users';
+import Shops from './pages/Shops';
+import Tailors from './pages/Tailors';
+import Orders from './pages/Orders';
+import { ChakraProvider } from '@chakra-ui/react'
+import { ToastContainer } from 'react-toastify';
+import ShopCategories from './pages/ShopCategories';
+import TailorCategories from './pages/TailorCategories';
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,86 +32,97 @@ function App() {
     <Loader />
   ) : (
     <>
+    <ToastContainer/>
+     <ChakraProvider>
       <Routes>
         <Route
           index
+          path="/"
           element={
             <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Home | Admin Dashboard" />
               <ECommerce />
             </>
           }
         />
-       
         <Route
-          path="/profile"
+          path="/products"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
+              <PageTitle title="All Products | Admin Dashboard" />
+              <Products />
             </>
           }
         />
         <Route
-          path="/forms/form-elements"
+          path="/product-categories"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormElements />
+              <PageTitle title="Products Categories | Admin Dashboard" />
+              <ProductCategories />
             </>
           }
         />
         <Route
-          path="/forms/form-layout"
+          path="/shop-categories"
           element={
             <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormLayout />
+              <PageTitle title="Shop Categories | Admin Dashboard" />
+              <ShopCategories />
             </>
           }
         />
         <Route
-          path="/tables"
+          path="/tailor-categories"
           element={
             <>
-              <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Tables />
+              <PageTitle title="tailor Categories | Admin Dashboard" />
+              <TailorCategories />
             </>
           }
         />
         <Route
-          path="/settings"
+          path="/users"
           element={
             <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Settings />
+              <PageTitle title="All Users | Admin Dashboard" />
+              <Users />
             </>
           }
         />
         <Route
-          path="/chart"
+          path="/shops"
           element={
             <>
-              <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Chart />
+              <PageTitle title="All Shops | Admin Dashboard" />
+              <Shops />
             </>
           }
         />
-      
+        <Route
+          path="/tailors"
+          element={
+            <>
+              <PageTitle title="All Tailors | Admin Dashboard" />
+              <Tailors />
+            </>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <>
+              <PageTitle title="All Orders | Admin Dashboard" />
+              <Orders />
+            </>
+          }
+        />
+
         {/* <Route
-          path="/ui/buttons"
-          element={
-            <>
-              <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Buttons />
-            </>
-          }
-        /> */}
-        <Route
           path="/auth/signin"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Signin | Admin Dashboard" />
               <SignIn />
             </>
           }
@@ -118,12 +131,13 @@ function App() {
           path="/auth/signup"
           element={
             <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Signup | Admin Dashboard" />
               <SignUp />
             </>
           }
-        />
+        /> */}
       </Routes>
+      </ChakraProvider>
     </>
   );
 }
