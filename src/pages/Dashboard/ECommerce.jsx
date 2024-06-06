@@ -5,7 +5,7 @@ import CardDataStats from '../../components/CardDataStats';
 import GetAPI from '../../utilities/GetAPI';
 
 export default function ECommerce() {
-  const { data } = GetAPI('admin/get_products');
+  const { data } = GetAPI('admin/v1/allUsers');
   return (
     <div>
       <DefaultLayout>

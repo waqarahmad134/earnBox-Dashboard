@@ -5,28 +5,34 @@ import { BASE_URL } from '../utilities/URL';
 import DefaultLayout from '../layout/DefaultLayout';
 import TableUsers from '../components/Tables/TableUsers';
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
-import { error_toaster, info_toaster } from '../utilities/Toaster';
+import {
+  info_toaster,
+  success_toaster,
+  warning_toaster,
+} from '../utilities/Toaster';
 
 export default function Users() {
-  const { data, reFetch } = GetAPI('admin/get_users');
+  const { data, reFetch } = GetAPI('admin/v1/allUsers');
+
   function handleClick(id) {
-    axios.get(BASE_URL + `admin/updateStatus/${id}`).then((dat) => {
+    axios.get(BASE_URL + `admin/V1/updateStatus/${id}`).then((dat) => {
       if (dat?.data?.status === '1') {
-        reFetch();
-        info_toaster(dat?.data?.message);
+        success_toaster(dat?.data?.message);
       } else {
-        error_toaster(dat?.data?.message);
+        console.log(dat?.data);
+        warning_toaster(dat?.data?.message);
       }
+      reFetch();
     });
   }
   function deleteUser(id) {
-    axios.get(BASE_URL + `admin/deleteUser/${id}`).then((dat) => {
+    axios.get(BASE_URL + `admin/v1/deleteUser/${id}`).then((dat) => {
       if (dat?.data?.status === '1') {
-        reFetch();
-        info_toaster(dat?.data?.message);
+        success_toaster(dat?.data?.message);
       } else {
-        error_toaster(dat?.data?.message);
+        info_toaster(dat?.data?.message);
       }
+      reFetch();
     });
   }
   return (

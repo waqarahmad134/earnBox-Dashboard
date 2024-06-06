@@ -1,5 +1,4 @@
 import React from 'react'
-import GetAPI from '../../utilities/GetAPI'
 
 export default function TableUsers(props) {
   return (
@@ -31,12 +30,12 @@ export default function TableUsers(props) {
               <tr key={key}>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium text-black dark:text-white">
-                    {user?.name}
+                    {user?.firstName + user?.lastName} 
                   </h5>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <p className="text-black dark:text-white">
-                    {user?.phone}
+                    {user?.phoneNum}
                   </p>
                 </td>
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
