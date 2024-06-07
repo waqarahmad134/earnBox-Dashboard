@@ -14,6 +14,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { ToastContainer } from 'react-toastify';
 import ShopCategories from './pages/ShopCategories';
 import TailorCategories from './pages/TailorCategories';
+import Package from './pages/Packages/Package';
+import AddPackage from './pages/Packages/AddPackage';
 
 
 function App() {
@@ -46,11 +48,20 @@ function App() {
           }
         />
         <Route
-          path="/products"
+          path="/packages"
           element={
             <>
-              <PageTitle title="All Products | Admin Dashboard" />
-              <Products />
+              <PageTitle title="All Packages | Admin Dashboard" />
+              <Package />
+            </>
+          }
+        />
+        <Route
+          path="/add-package"
+          element={
+            <>
+              <PageTitle title="Add Package | Admin Dashboard" />
+              <AddPackage />
             </>
           }
         />
