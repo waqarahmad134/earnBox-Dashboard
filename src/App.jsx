@@ -16,6 +16,11 @@ import ShopCategories from './pages/ShopCategories';
 import TailorCategories from './pages/TailorCategories';
 import Package from './pages/Packages/Package';
 import AddPackage from './pages/Packages/AddPackage';
+import EditPackage from './pages/Packages/EditPackage';
+import UserDetails from './pages/UserDetails';
+import PaymentMethod from './pages/PaymentMethod/PaymentMethod';
+import EditPaymentMethod from './pages/PaymentMethod/EditPaymentMethod';
+import AddPaymentMethod from './pages/PaymentMethod/AddPaymentMethod';
 
 
 function App() {
@@ -66,11 +71,38 @@ function App() {
           }
         />
         <Route
-          path="/product-categories"
+          path="/edit-package"
           element={
             <>
-              <PageTitle title="Products Categories | Admin Dashboard" />
-              <ProductCategories />
+              <PageTitle title="Edit Package | Admin Dashboard" />
+              <EditPackage />
+            </>
+          }
+        />
+        <Route
+          path="/payment-method"
+          element={
+            <>
+              <PageTitle title="Payment Methods | Admin Dashboard" />
+              <PaymentMethod />
+            </>
+          }
+        />
+        <Route
+          path="/add-payment-method"
+          element={
+            <>
+              <PageTitle title="Add Payment Method | Admin Dashboard" />
+              <AddPaymentMethod />
+            </>
+          }
+        />
+        <Route
+          path="/edit-payment-method"
+          element={
+            <>
+              <PageTitle title="Edit Payment Method | Admin Dashboard" />
+              <EditPaymentMethod />
             </>
           }
         />
@@ -98,6 +130,15 @@ function App() {
             <>
               <PageTitle title="All Users | Admin Dashboard" />
               <Users />
+            </>
+          }
+        />
+        <Route
+          path="/user-details"
+          element={
+            <>
+              <PageTitle title="All Users | Admin Dashboard" />
+              <UserDetails />
             </>
           }
         />

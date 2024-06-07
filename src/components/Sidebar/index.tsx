@@ -64,7 +64,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <NavLink to="/">
-          <img className='w-full mx-auto' src={Logo} alt="Logo" />
+          <img className="w-full mx-auto" src={Logo} alt="Logo" />
         </NavLink>
 
         <button
@@ -105,7 +105,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('/') && 'bg-graydark dark:bg-meta-4'
+                    pathname === '/' && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   Dashboard
@@ -114,44 +114,50 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/users"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('users') && 'bg-graydark dark:bg-meta-4'
+                    (pathname.includes('users') ||
+                      pathname.includes('user-details')) &&
+                    'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   All Users
                 </NavLink>
 
                 <NavLink
-                  to="/shops"
+                  to="/packages"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('shops') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  Shops
-                </NavLink>
-                <NavLink
-                  to="/tailors"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('tailors') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  Tailors
-                </NavLink>
-                <NavLink
-                  to="/orders"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('orders') && 'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  Orders
-                </NavLink>
-                <NavLink
-                  to="/products"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('products') &&
+                    pathname.includes('packages') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
-                  Products
+                  Packages
+                </NavLink>
+                <NavLink
+                  to="/add-package"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('add-package') &&
+                    'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  Add-package
+                </NavLink>
+
+                <NavLink
+                  to="/payment-method"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('payment-method') &&
+                    'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  Payment Method
+                </NavLink>
+                <NavLink
+                  to="/add-payment-method"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('add-payment-method') &&
+                    'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  Add Payment Method
                 </NavLink>
                 <NavLink
                   to="/product-categories"

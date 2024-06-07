@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { FaEye } from 'react-icons/fa';
 import { IoTrashOutline } from 'react-icons/io5';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function TableUsers(props) {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredUsers = props.data.filter((user) =>
-    `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredUsers = props?.data?.filter((user) =>
+    `${user.firstName} ${user.lastName}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase()),
   );
 
   const handleDeleteConfirmation = (userId) => {
@@ -19,6 +24,10 @@ export default function TableUsers(props) {
     } else {
       return;
     }
+  };
+
+  const handleView = (data) => {
+    navigate('/user-details', { state: data });
   };
 
   return (
@@ -53,7 +62,7 @@ export default function TableUsers(props) {
               </tr>
             </thead>
             <tbody>
-              {filteredUsers.map((user, key) => (
+              {filteredUsers?.map((user, key) => (
                 <tr key={key}>
                   <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                     <h5 className="font-medium text-black dark:text-white">
@@ -61,15 +70,37 @@ export default function TableUsers(props) {
                     </h5>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="text-black dark:text-white">{user.phoneNum}</p>
+                    <p className="text-black dark:text-white">
+                      {user.phoneNum}
+                    </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p className="text-black dark:text-white">{user.email}</p>
                   </td>
                   <td className="capitalize border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="text-black dark:text-white">
-                      {user.status === true ? 'Active' : 'Block'}
-                    </p>
+                    <label className="inline-flex items-center me-5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="sr-only"
+                        checked={user.status}
+                        onChange={() => props.onClick(user.id)}
+                      />
+                      <div
+                        className={`relative w-11 h-6 bg-red-400 rounded-full peer ${
+                          user.status ? 'bg-teal-600' : 'dark:bg-gray-700'
+                        } peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800`}
+                      >
+                        <div
+                          className={`after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-green-200 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 ${
+                            user.status ? 'after:border-white' : ''
+                          } ${
+                            user.status
+                              ? 'after:translate-x-full rtl:after:-translate-x-full'
+                              : ''
+                          }`}
+                        ></div>
+                      </div>
+                    </label>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <div className="flex items-center justify-center space-x-3.5">
@@ -79,14 +110,13 @@ export default function TableUsers(props) {
                       >
                         <IoTrashOutline size={24} />
                       </button>
-                      <button
-                        onClick={() => props.onClick(user.id)}
-                        className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
-                          user.status === true ? 'bg-success text-success' : 'bg-danger text-warning'
-                        }`}
+
+                      <div
+                        onClick={() => handleView(user)}
+                        className="bg-gray-2 rounded-full p-2"
                       >
-                        {user.status === !true ? 'Active' : 'Block'}
-                      </button>
+                        <FaEye size={24} />
+                      </div>
                     </div>
                   </td>
                 </tr>

@@ -1,7 +1,14 @@
 import React from 'react';
 import { BASE_URL } from '../../utilities/URL';
+import { FaEdit } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function TableThree(props) {
+  const navigate = useNavigate();
+  const handleEdit = (data) => {
+    navigate('/edit-package', { state: { data } });
+  };
+
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -15,7 +22,7 @@ export default function TableThree(props) {
                 <th className="py-4 px-4 font-medium text-black dark:text-white">
                   Img
                 </th>
-                <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white">
                   Package Name
                 </th>
                 <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
@@ -41,7 +48,7 @@ export default function TableThree(props) {
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <img
-                    className='h-12 w-full  object-cover mx-auto'
+                      className="h-12 w-full  object-cover mx-auto"
                       src={
                         packageItem?.image === '' || packageItem?.image === null
                           ? 'https://vipshisha.co.uk/wp-content/uploads/2017/06/gold.png'
@@ -74,9 +81,12 @@ export default function TableThree(props) {
                     </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p className="text-black dark:text-white">
-                      Action
-                    </p>
+                    <button
+                      onClick={() => handleEdit(packageItem)}
+                      className="text-black dark:text-white"
+                    >
+                      <FaEdit size={24} />
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PostAPI } from '../../utilities/PostAPI';
-
 import { inputStyle, labelStyle } from '../../utilities/Input';
 import DefaultLayout from '../../layout/DefaultLayout';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
