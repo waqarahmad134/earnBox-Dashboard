@@ -13,7 +13,7 @@ import {
 
 export default function Users() {
   const { data, reFetch } = GetAPI('admin/v1/allUsers');
-  console.log("🚀 ~ Users ~ data:", data)
+  console.log('🚀 ~ Users ~ data:', data);
 
   function handleClick(id) {
     axios.get(BASE_URL + `admin/V1/updateStatus/${id}`).then((dat) => {
@@ -36,10 +36,21 @@ export default function Users() {
       reFetch();
     });
   }
+  function handlePaymentStatus(id) {
+    axios.get(BASE_URL + `admin/v1/updatePaymentStatus/${id}`).then((dat) => {
+      if (dat?.data?.status === '1') {
+        success_toaster(dat?.data?.message);
+      } else {
+        info_toaster(dat?.data?.message);
+      }
+      reFetch();
+    });
+  }
   return (
     <DefaultLayout>
       <Breadcrumb pageName="All Users" />
       <TableUsers
+        handlePaymentStatus={handlePaymentStatus}
         deleteUser={deleteUser}
         onClick={handleClick}
         data={data?.data?.data}

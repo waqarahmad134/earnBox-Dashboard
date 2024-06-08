@@ -5,17 +5,27 @@ import TableThree from '../../components/Tables/TableThree';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import axios from 'axios';
+import { BASE_URL } from '../../utilities/URL';
+import { info_toaster, success_toaster } from '../../utilities/Toaster';
 
 export default function PaymentMethod() {
   const navigate = useNavigate();
   const { data, reFetch } = GetAPI('admin/v1/getPaymentMethod');
 
-  const handleDelete = (id) => {
-    alert(id);
-  };
+  function handleDelete(id) {
+    axios.get(BASE_URL + `admin/v1/deletePaymentMethod/${id}`).then((dat) => {
+      if (dat?.data?.status === '1') {
+        success_toaster(dat?.data?.message);
+      } else {
+        info_toaster(dat?.data?.message);
+      }
+      reFetch();
+    });
+  }
 
   const handleEdit = (data) => {
-    navigate('/edit-payment-method', { state: data });
+    navigate('/edit-payment-method', { state: { data } });
   };
   return (
     <DefaultLayout>
@@ -38,7 +48,7 @@ export default function PaymentMethod() {
                     No #
                   </th>
 
-                  <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white">
+                  <th className="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Name
                   </th>
                   <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">

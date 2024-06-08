@@ -144,7 +144,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/payment-method"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('payment-method') &&
+                    pathname === '/payment-method' &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
@@ -158,33 +158,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   }`}
                 >
                   Add Payment Method
-                </NavLink>
-                <NavLink
-                  to="/product-categories"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('product-categories') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  Product Categories
-                </NavLink>
-                <NavLink
-                  to="/shop-categories"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('shop-categories') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  Shop Categories
-                </NavLink>
-                <NavLink
-                  to="/tailor-categories"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('tailor-categories') &&
-                    'bg-graydark dark:bg-meta-4'
-                  }`}
-                >
-                  Tailor Categories
                 </NavLink>
               </li>
             </ul>
