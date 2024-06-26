@@ -14,6 +14,10 @@ import UserDetails from './pages/UserDetails';
 import PaymentMethod from './pages/PaymentMethod/PaymentMethod';
 import EditPaymentMethod from './pages/PaymentMethod/EditPaymentMethod';
 import AddPaymentMethod from './pages/PaymentMethod/AddPaymentMethod';
+import WithdrawRequest from './pages/Withdraw/WithdrawRequest';
+import Ad from './pages/Ads/Ad';
+import AddAd from './pages/Ads/AddAd';
+import EditAd from './pages/Ads/EditAd';
 
 
 function App() {
@@ -115,6 +119,42 @@ function App() {
             <>
               <PageTitle title="All Users | Admin Dashboard" />
               <UserDetails />
+            </>
+          }
+        />     
+        <Route
+        path="/withdraw-request"
+          element={
+            <>
+              <PageTitle title="Withdraw Request | Admin Dashboard" />
+              <WithdrawRequest />
+            </>
+          }
+        />     
+        <Route
+        path="/ad"
+          element={
+            <>
+              <PageTitle title="Add | Admin Dashboard" />
+              <Ad />
+            </>
+          }
+        />     
+        <Route
+        path="/add-ad"
+          element={
+            <>
+              <PageTitle title="Add Ads | Admin Dashboard" />
+              <AddAd />
+            </>
+          }
+        />     
+        <Route
+        path="/edit-ad"
+          element={
+            <>
+              <PageTitle title="edit Ads | Admin Dashboard" />
+              <EditAd />
             </>
           }
         />     

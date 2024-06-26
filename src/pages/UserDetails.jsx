@@ -1,8 +1,12 @@
 import React from 'react';
 import DefaultLayout from '../layout/DefaultLayout';
 import { Breadcrumb } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
 
 export default function UserDetails() {
+  const location = useLocation();
+  const data = location.state?.data;
+  console.log("🚀 ~ UserDetails ~ data:", data)
   return (
     <>
       <DefaultLayout>

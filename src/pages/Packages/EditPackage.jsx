@@ -13,7 +13,6 @@ export default function EditPackage() {
   const [disabled, setDisabled] = useState(false);
   const location = useLocation();
   const data = location.state?.data;
-  console.log(data);
   const [editPackage, setEditPackage] = useState({
     id: data?.id,
     name: data?.name,
@@ -25,6 +24,8 @@ export default function EditPackage() {
     price: data?.price,
     validity: data?.validity,
     image: data?.image,
+    referalBonus: data?.referalBonus,
+    withdrawThreshold : data?.withdrawThreshold,
   });
 
   const onChange = (e) => {
@@ -49,6 +50,8 @@ export default function EditPackage() {
       price,
       validity,
       image,
+      referalBonus,
+      withdrawThreshold
     } = editPackage;
     if (name === '') {
       info_toaster('Please Enter Name');
@@ -66,6 +69,8 @@ export default function EditPackage() {
       formData.append('referralBonus', referralBonus);
       formData.append('price', price);
       formData.append('validity', validity);
+      formData.append('withdrawThreshold', withdrawThreshold);
+      formData.append('referalBonus', referalBonus);
       formData.append('image', image);
       try {
         let res = await PostAPI('admin/v1/editPackage', formData);
@@ -195,7 +200,36 @@ export default function EditPackage() {
                 />
               </div>
             </div>
-
+            <div className="flex gap-x-4">
+              <div className="space-y-1 w-full">
+                <label className={labelStyle} htmlFor="withdrawThreshold">
+                  Withdraw Threshold
+                </label>
+                <input
+                  value={editPackage?.withdrawThreshold}
+                  onChange={onChange}
+                  type="text"
+                  name="withdrawThreshold"
+                  id="withdrawThreshold"
+                  placeholder="50$"
+                  className={inputStyle}
+                />
+              </div>
+              <div className="space-y-1 w-full">
+                <label className={labelStyle} htmlFor="referalBonus">
+                  Referal Bonus
+                </label>
+                <input
+                  value={editPackage?.referalBonus}
+                  onChange={onChange}
+                  type="text"
+                  name="referalBonus"
+                  id="referalBonus"
+                  placeholder="referalBonus"
+                  className={inputStyle}
+                />
+              </div>
+            </div>
             <div className="space-y-1 w-full">
               <label className={labelStyle} htmlFor="image">
                 Image

@@ -52,7 +52,8 @@ export default function TableThree(props) {
                       src={
                         packageItem?.image === '' || packageItem?.image === null
                           ? 'https://vipshisha.co.uk/wp-content/uploads/2017/06/gold.png'
-                          : BASE_URL + packageItem?.image
+                          : 'https://vipshisha.co.uk/wp-content/uploads/2017/06/gold.png'
+                          // : BASE_URL + packageItem?.image
                       }
                       alt={packageItem?.name}
                     />

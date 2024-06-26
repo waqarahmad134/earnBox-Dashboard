@@ -13,8 +13,6 @@ import {
 
 export default function Users() {
   const { data, reFetch } = GetAPI('admin/v1/allUsers');
-  console.log('🚀 ~ Users ~ data:', data);
-
   function handleClick(id) {
     axios.get(BASE_URL + `admin/V1/updateStatus/${id}`).then((dat) => {
       if (dat?.data?.status === '1') {

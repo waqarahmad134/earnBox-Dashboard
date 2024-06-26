@@ -16,7 +16,6 @@ export default function TableUsers(props) {
       .toLowerCase()
       .includes(searchQuery.toLowerCase()),
   );
-  console.log('🚀 ~ TableUsers ~ filteredUsers:', filteredUsers);
 
   const handleDeleteConfirmation = (userId) => {
     const confirmDelete = window.confirm('Confirm Delete This User?');
@@ -138,12 +137,12 @@ export default function TableUsers(props) {
                         <IoTrashOutline size={24} />
                       </button>
 
-                      <div
+                      {/* <div
                         onClick={() => handleView(user)}
                         className="bg-gray-2 rounded-full p-2"
                       >
                         <FaEye size={24} />
-                      </div>
+                      </div> */}
                     </div>
                   </td>
                 </tr>

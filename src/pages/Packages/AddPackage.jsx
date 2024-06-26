@@ -18,6 +18,8 @@ export default function AddPackage() {
     price: 0,
     validity: '',
     image: '',
+    referalBonus: '',
+    withdrawThreshold: '',
   });
 
   const onChange = (e) => {
@@ -42,6 +44,8 @@ export default function AddPackage() {
       price,
       validity,
       image,
+      referalBonus,
+      withdrawThreshold,
     } = addPackage;
     if (name === '') {
       info_toaster('Please Enter Name');
@@ -57,6 +61,8 @@ export default function AddPackage() {
       formData.append('earn', earn);
       formData.append('referralBonus', referralBonus);
       formData.append('price', price);
+      formData.append('referalBonus', referalBonus);
+      formData.append('withdrawThreshold', withdrawThreshold);
       formData.append('validity', validity);
       formData.append('image', image);
       try {
@@ -74,6 +80,8 @@ export default function AddPackage() {
             price: 0,
             validity: '',
             image: '',
+            withdrawThreshold: '',
+            referalBonus: '',
           });
         } else {
           setLoader(false);
@@ -154,9 +162,9 @@ export default function AddPackage() {
               </div>
             </div>
             <div className="flex gap-x-4">
-            <div className="space-y-1 w-full">
+              <div className="space-y-1 w-full">
                 <label className={labelStyle} htmlFor="earn">
-                  Earn
+                  Earn (Package Price / Per Month)
                 </label>
                 <input
                   value={addPackage?.earn}
@@ -197,7 +205,36 @@ export default function AddPackage() {
                 />
               </div>
             </div>
-
+            <div className="flex gap-x-4">
+              <div className="space-y-1 w-full">
+                <label className={labelStyle} htmlFor="withdrawThreshold">
+                  Withdraw Threshold
+                </label>
+                <input
+                  value={addPackage?.withdrawThreshold}
+                  onChange={onChange}
+                  type="text"
+                  name="withdrawThreshold"
+                  id="withdrawThreshold"
+                  placeholder="50$"
+                  className={inputStyle}
+                />
+              </div>
+              <div className="space-y-1 w-full">
+                <label className={labelStyle} htmlFor="referalBonus">
+                  Referal Bonus
+                </label>
+                <input
+                  value={addPackage?.referalBonus}
+                  onChange={onChange}
+                  type="text"
+                  name="referalBonus"
+                  id="referalBonus"
+                  placeholder="referalBonus"
+                  className={inputStyle}
+                />
+              </div>
+            </div>
             <div className="space-y-1 w-full">
               <label className={labelStyle} htmlFor="image">
                 Image
