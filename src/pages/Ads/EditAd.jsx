@@ -20,7 +20,6 @@ export default function EditAd() {
     title: data?.title,
     packageId: data?.packageId,
   });
-
  
   const onChange = (e) => {
     setEditAd({ ...editAd, [e.target.name]: e.target.value });

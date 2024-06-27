@@ -24,8 +24,6 @@ export default function AddAd() {
     }
   }, [data]);
 
-  console.log(ad)
-
   const onChange = (e) => {
     setAd({ ...ad, [e.target.name]: e.target.value });
   };
@@ -37,9 +35,6 @@ export default function AddAd() {
       info_toaster('Please Enter Name');
     } else {
       setLoader(true);
-      const formData = new FormData();
-      formData.append('name', title);
-      formData.append('packageId', packageId);
       try {
         let res = await PostAPI('admin/v1/addNewAd', {
           title: title,
@@ -48,9 +43,10 @@ export default function AddAd() {
         if (res?.data?.status === '1') {
           setLoader(false);
           success_toaster(res?.data?.message);
-          setAd({
-            title: '',
-          });
+          setAd(prevAd => ({
+            ...prevAd,
+            title: newTitle,
+          }));
         } else {
           setLoader(false);
           info_toaster(res?.data?.message);
